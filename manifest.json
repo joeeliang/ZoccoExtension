@@ -1,15 +1,19 @@
 {
-    "manifest_version": 2,
-    "name": "My Extension",
-    "version": "1.0",
-    "description": "Change the background color of a webpage.",
-    "browser_action": {
-      "default_popup": "popup.html"
-    },
-    "permissions": ["activeTab"],
-    "content_scripts": [{
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"]
-    }]
-  }
-  
+  "manifest_version": 2,
+  "name": "Bionic Reader",
+  "version": "1.0",
+  "description": "Bolds the first few letters of every word",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
