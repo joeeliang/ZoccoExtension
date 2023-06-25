@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Bionic Reader",
   "version": "1.0",
   "description": "Bolds the first few letters of every word",
@@ -15,5 +15,9 @@
       "css": ["styles.css"],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "action": {
+    "default_title": "Click Me",   
+    "default_popup": "popup.html"  
+  }
 }
