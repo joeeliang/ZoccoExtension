@@ -1,23 +1,28 @@
 {
-  "manifest_version": 3,
-  "name": "Bionic Reader",
-  "version": "1.0",
-  "description": "Bolds the first few letters of every word",
-  "permissions": [
-    "activeTab"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
+    "manifest_version": 3,
+    "name": "Word Bolder",
+    "version": "1.0",
+    "description": "Bold the first characters of words on webpages.",
+    "permissions": ["activeTab"],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "host_permissions": [
         "<all_urls>"
-      ],
-      "js": ["content.js"],
-      "css": ["styles.css"],
-      "run_at": "document_end"
-    }
-  ],
-  "action": {
-    "default_title": "Click Me",   
-    "default_popup": "popup.html"  
-  }
+    ],
+    "content_scripts": [
+        {
+        "matches": [
+            "<all_urls>"
+        ],
+        "js": ["content.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+        "resources": ["popup.html"],
+        "matches": ["http://*/*", "https://*/*"]
+        }
+    ]
 }
+  
