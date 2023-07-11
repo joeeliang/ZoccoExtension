@@ -1,13 +1,13 @@
 // Function to bold the first letter of each word in all <p> elements
-function boldFirstLetters(text) {
+function boldFirstLetters(text, boldedAmount) {
     // Split the text into an array of words
     const words = text.split(' ');
 
     // Iterate through each word and bold the first letter
     const modifiedWords = words.map(word => {
-        if (word.length > 0) {
-        const firstChar = word.charAt(0);
-        const restOfWord = word.slice(1);
+        if (word.length > boldedAmount) {
+        const firstChar = word.slice(0,boldedAmount);
+        const restOfWord = word.slice(boldedAmount);
         return `<b>${firstChar}</b>${restOfWord}`;
         } else {
         return word;
@@ -20,14 +20,20 @@ function boldFirstLetters(text) {
     return modifiedText;
 }
 
-function boldFirstLettersInParagraphs() {
+function removeBoldTags(str) {
+    const regex = /<b>|<\/b>/gi; // Regular expression to match <b> and </b> tags
+    return str.replace(regex, ''); // Remove <b> tags using the replace() method
+}
+  
+function boldFirstLettersInParagraphs(boldedAmount) {
     // Select all <p> elements in the webpage
     const paragraphs = document.querySelectorAll('p');
 
     // Iterate through each <p> element and modify its content
     paragraphs.forEach(paragraph => {
         const originalText = paragraph.innerHTML;
-        const modifiedText = boldFirstLetters(originalText);
+        const boldlessText = removeBoldTags(originalText);
+        const modifiedText = boldFirstLetters(boldlessText,boldedAmount);
         paragraph.innerHTML = modifiedText;
     });
 }
@@ -35,7 +41,7 @@ function boldFirstLettersInParagraphs() {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 if (request.boldness) {
     const boldness = parseInt(request.boldness);
-    boldFirstLettersInParagraphs();
+    boldFirstLettersInParagraphs(boldness);
     console.log("IM trying");
 }
 });
