@@ -28,6 +28,7 @@ function removeBoldTags(str) {
 function boldFirstLettersInParagraphs(boldedAmount) {
     // Select all <p> elements in the webpage
     const paragraphs = document.querySelectorAll('p');
+    const li = document.querySelectorAll('li');
 
     // Iterate through each <p> element and modify its content
     paragraphs.forEach(paragraph => {
@@ -35,6 +36,13 @@ function boldFirstLettersInParagraphs(boldedAmount) {
         const boldlessText = removeBoldTags(originalText);
         const modifiedText = boldFirstLetters(boldlessText,boldedAmount);
         paragraph.innerHTML = modifiedText;
+    });
+
+    li.forEach(il => {
+        const originalText = il.innerHTML;
+        const boldlessText = removeBoldTags(originalText);
+        const modifiedText = boldFirstLetters(boldlessText,boldedAmount);
+        il.innerHTML = modifiedText;
     });
 }
 
