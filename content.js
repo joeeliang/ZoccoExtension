@@ -9,7 +9,7 @@ function boldFirstLettersIgnoretag(text, boldedAmount) {
     const modifiedWords = words.map(word => {
         console.log(word);
         console.log(typeof word);
-        let tags = '<>=\'\"';
+        let tags = '&<>=\'\"';
 
         if (tags.split("").some(char => word.includes(char))){
             console.log("This has equal tag! Skip!")
@@ -68,7 +68,7 @@ function removeBoldTags(str) {
   
 function boldFirstLettersInParagraphs(boldedAmount) {
     // Select all <p> elements in the webpage
-    const paragraphs = document.querySelectorAll('p');
+    const paragraphs = document.querySelectorAll("p, li");
 
     // Iterate through each <p> element and modify its content
     paragraphs.forEach(paragraph => {
