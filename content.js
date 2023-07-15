@@ -41,7 +41,11 @@ function boldFirstLettersInParagraphs(boldedAmount) {
     li.forEach(il => {
         const originalText = il.innerHTML;
         const boldlessText = removeBoldTags(originalText);
+<<<<<<< Updated upstream
         const modifiedText = boldFirstLetters(boldlessText,boldedAmount);
+=======
+        const modifiedText = boldFirstLettersIgnoretag(boldlessText,boldedAmount);
+>>>>>>> Stashed changes
         il.innerHTML = modifiedText;
     });
 }
