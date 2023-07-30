@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Word Bolder Extension</title>
-  <script src="popup.js"></script>
+  <title>Bolding Text Extension</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-  <h1>Word Bolder Extension</h1>
-  <div>
-    <label for="boldnessSlider">Number of Letters to Bold:</label>
-    <input type="range" id="boldnessSlider" min="1" max="10" value="3">
+  <header>
+    <h1>Bolding Text</h1>
+  </header>
+  <div class="popup">
+    <div class="boxContainer">
+      <input type="range" class="slider" id="boldnessSlider" min="1" max="5" value="3" step="1">
+    </div>
+    <div class="boxContainer">
+      <h2 class="boxElements">Bolded Amount:</h2>
+      <h2 class="boxElements" id="displayValue">3</h2>
+    </div>
+    <button class="confirm-button" id="confirm">Confirm</button>
   </div>
+  <script src="popup.js"></script>
 </body>
 </html>

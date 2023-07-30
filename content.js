@@ -79,10 +79,17 @@ function boldFirstLettersInParagraphs(boldedAmount) {
     });
 }
 
+function changeHtml(num){
+    const output = document.getElementById("sliderValue");
+    output.innerHTML = num;
+    console.log("Changed")
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 if (request.boldness) {
     const boldness = parseInt(request.boldness);
     boldFirstLettersInParagraphs(boldness);
+    changeHtml(boldness);
     console.log("IM trying");
 }
 });

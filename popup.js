@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const boldnessSlider = document.getElementById('boldnessSlider');
+  const confirmButton = document.getElementById('confirm');
+  const boldnessSlider = document.getElementById('boldnessSlider')
+  const value = document.getElementById('displayValue');
 
-  boldnessSlider.addEventListener('input', () => {
+  confirmButton.addEventListener('click', () => {
     const boldness = parseInt(boldnessSlider.value);
     console.log(boldness);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { boldness });
     });
   });
-
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, { boldness: boldnessSlider.value });
+  boldnessSlider.addEventListener('input', () => {
+    const boldness = parseInt(boldnessSlider.value);
+    value.innerHTML = boldness;
   });
+
 });
